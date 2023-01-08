@@ -13,13 +13,13 @@ Author URL: http://w3layouts.com
     <!-- Google fonts -->
     <link href="//fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Template CSS Style link -->
-    <link rel="stylesheet" href="/assets/css/style-starter.css">
+    <link rel="stylesheet" href="assets/css/style-starter.css">
 </head>
 
 <body>
 
     <!-- header -->
-    <div th:replace="header :: header">...</div>
+    <div th:replace="~{header :: header}">...</div>
     <!-- //header -->
 
     <!-- inner banner -->
@@ -46,24 +46,23 @@ Author URL: http://w3layouts.com
             <div class="row contact-block">
                 <div class="col-md-7 contact-right">
                     <ul>
-                        <li class="alert alert-danger" role="alert"
-                            th:each="error : ${#fields.errors('contact.*')}" th:text="${error}" />
+                        <li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('contact.*')}" th:text="${error}" />
                     </ul>
-                    <form th:action="@{/saveMsg}" method="post" class="signin-form" th:object="${contact}">
+                    <form action="/saveMsg" method="post" class="signin-form" th:object="${contact}">
                         <div class="input-grids">
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="text" th:field="*{name}" placeholder="Your Name" required="true"
+                                    <input type="text" th:field="*{name}" placeholder="Your Name"
                                         class="contact-input" />
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" th:field="*{mobileNum}" placeholder="Your Mobile Number" required="true"
+                                    <input type="text" th:field="*{mobileNum}" placeholder="Your Mobile Number"
                                         class="contact-input" />
                                 </div>
                             </div>
-                            <input type="email" th:field="*{email}" placeholder="Your Email" required="true"
+                            <input type="text" th:field="*{email}" placeholder="Your Email"
                                 class="contact-input" />
-                            <input type="text" th:field="*{subject}" placeholder="Subject" required="true"
+                            <input type="text" th:field="*{subject}" placeholder="Subject"
                                 class="contact-input" />
                         </div>
                         <div class="form-input">
@@ -128,7 +127,7 @@ Author URL: http://w3layouts.com
     <!-- //contact block -->
 
     <!-- footer block -->
-    <div th:replace="footer :: footer">...</div>
+    <div th:replace="~{footer :: footer}">...</div>
     <!-- //footer block -->
 
     <!-- Js scripts -->
@@ -159,11 +158,11 @@ Author URL: http://w3layouts.com
     <!-- //move top -->
 
     <!-- common jquery plugin -->
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
     <!-- //common jquery plugin -->
 
     <!-- theme switch js (light and dark)-->
-    <script src="/assets/js/theme-change.js"></script>
+    <script src="assets/js/theme-change.js"></script>
     <!-- //theme switch js (light and dark)-->
 
     <!-- MENU-JS -->
@@ -206,7 +205,7 @@ Author URL: http://w3layouts.com
     <!-- //disable body scroll which navbar is in active -->
 
     <!-- bootstrap -->
-    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <!-- //bootstrap -->
     <!-- //Js scripts -->
 </body>

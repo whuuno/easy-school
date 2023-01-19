@@ -27,6 +27,7 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/courses").permitAll()
                 .requestMatchers("/about").permitAll()
                 .requestMatchers("/login").permitAll()
+                .requestMatchers("/displayMessages").permitAll()
                 .requestMatchers("/logout").permitAll()
                 .requestMatchers("/assets/**").permitAll()
                 .requestMatchers(PathRequest.toH2Console()).permitAll()

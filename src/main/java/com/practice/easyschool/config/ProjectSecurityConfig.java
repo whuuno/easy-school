@@ -19,6 +19,7 @@ public class ProjectSecurityConfig {
                 .ignoringRequestMatchers(PathRequest.toH2Console()).and()
                 .authorizeHttpRequests()
                 .requestMatchers("/dashboard").authenticated()
+                .requestMatchers("/").permitAll()
                 .requestMatchers("/home").permitAll()
                 .requestMatchers("/holidays/**").permitAll()
                 .requestMatchers("/contact").permitAll()

@@ -1,23 +1,25 @@
 package com.practice.easyschool.services;
 
+import com.practice.easyschool.constants.EazySchoolConstants;
 import com.practice.easyschool.model.Contact;
+import com.practice.easyschool.repository.ContactRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import org.springframework.web.context.annotation.ApplicationScope;
-//import org.springframework.web.context.annotation.RequestScope;
-//import org.springframework.web.context.annotation.SessionScope;
+
+import java.time.LocalDateTime;
 
 @Slf4j
 @Service
 @Getter
 @Setter
-//@RequestScope
-//@SessionScope
-//@ApplicationScope
 public class ContactService {
     private int counter = 0;
+
+    @Autowired
+    ContactRepository contactRepository;
 
     public ContactService(){
         System.out.println("Contact Service Bean initialized");
@@ -26,7 +28,16 @@ public class ContactService {
     public boolean saveMessageDetails(Contact contact) {
         boolean isSaved = true;
         //TODO - Need to persist data into the DB Table
-        //Assumption - data is saved successfully
+        contact.setStatus(EazySchoolConstants.OPEN);
+        contact.setCreatedBy(EazySchoolConstants.ANONYMOUS);
+        contact.setCreatedAt(LocalDateTime.now());
+
+        int result = contactRepository.saveContactMsg(contact);
+
+        if(result>0) {
+            isSaved = true;
+        }
+
         log.info(contact.toString());
         return isSaved;
     }

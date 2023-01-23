@@ -50,13 +50,11 @@ public class ProjectSecurityConfig {
                 .password("123456")
                 .roles("USER")
                 .build();
-
         UserDetails admin = User.withDefaultPasswordEncoder()
                 .username("admin")
                 .password("987654")
-                .roles("USER", "ADMIN")
+                .roles("ADMIN")
                 .build();
-
         return new InMemoryUserDetailsManager(user, admin);
     }
 }

@@ -1,7 +1,6 @@
 package com.practice.easyschool.rowMapper;
 
 import com.practice.easyschool.model.Contact;
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

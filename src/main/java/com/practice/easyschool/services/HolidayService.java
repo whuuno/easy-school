@@ -14,7 +14,7 @@ public class HolidayService {
     HolidayRepository holidayRepository;
 
     public List<Holiday> findAllHolidays() {
-        List<Holiday> holidays = holidayRepository.findAllHolidays();
+        List<Holiday> holidays = (List<Holiday>) holidayRepository.findAll();
         return holidays;
     }
 }

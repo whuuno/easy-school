@@ -15,8 +15,7 @@ public class ProjectSecurityConfig {
 
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().ignoringRequestMatchers("/saveMsg")
-                .ignoringRequestMatchers(PathRequest.toH2Console()).and()
+        http.csrf().ignoringRequestMatchers("/saveMsg").and()
                 .authorizeHttpRequests()
                 .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/").permitAll()
@@ -31,13 +30,10 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/closeMsg/**").hasRole("ADMIN")
                 .requestMatchers("/logout").permitAll()
                 .requestMatchers("/assets/**").permitAll()
-                .requestMatchers(PathRequest.toH2Console()).permitAll()
                 .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()
                 .and().httpBasic();
-
-        http.headers().frameOptions().disable();
 
         return http.build();
     }

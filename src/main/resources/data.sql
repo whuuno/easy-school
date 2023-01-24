@@ -20,7 +20,7 @@ INSERT INTO `holidays` (`day`,`reason`,`type`,`created_at`, `created_by`)
  VALUES (' Aug 15 ','Independence Day','FEDERAL',CURDATE(),'DBA');
 
 INSERT INTO `holidays` (`day`,`reason`,`type`,`created_at`, `created_by`)
- VALUES (' Sep 5 ','Teacher''s day,'FEDERAL',CURDATE(),'DBA');
+ VALUES (' Sep 5 ','Teacher''s day','FEDERAL',CURDATE(),'DBA');
 
 INSERT INTO `holidays` (`day`,`reason`,`type`,`created_at`, `created_by`)
   VALUES (' Oct 2 ','Gandhi Jayanti','FEDERAL',CURDATE(),'DBA');

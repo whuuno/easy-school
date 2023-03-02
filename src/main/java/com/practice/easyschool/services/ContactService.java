@@ -18,7 +18,6 @@ import java.util.Optional;
 @Getter
 @Setter
 public class ContactService {
-    private int counter = 0;
 
     @Autowired
     ContactRepository contactRepository;

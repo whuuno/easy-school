@@ -32,6 +32,7 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/displayProfile").permitAll()
                 .requestMatchers("/updateProfile").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/student/displayCourses").hasRole("STUDENT")
                 .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()

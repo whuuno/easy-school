@@ -77,7 +77,7 @@ public class Person extends BaseEntity{
     @JoinColumn(name = "class_Id", referencedColumnName = "classId",nullable = true)
     private SchoolClass schoolClass;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "person_courses",
             joinColumns = {
                     @JoinColumn(name = "person_id", referencedColumnName = "personId")},

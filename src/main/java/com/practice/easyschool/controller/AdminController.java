@@ -114,7 +114,7 @@ public class AdminController {
     public ModelAndView displayCourses(Model model){
         ModelAndView modelAndView = new ModelAndView("courses_secure.html");
         modelAndView.addObject("course", new Courses());
-        List<Courses> courses = (List<Courses>) coursesRepository.findAll();
+        List<Courses> courses = coursesRepository.findByOrderByNameDesc();
         modelAndView.addObject("courses", courses);
         return modelAndView;
     }

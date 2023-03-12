@@ -54,15 +54,8 @@ public class ContactService {
     public boolean updateMsgStatus(int contactId, String updatedBy){
         boolean isUpdated = false;
 
-        Optional<Contact> contact = contactRepository.findById(contactId);
-        contact.ifPresent( contact1 -> {
-            contact1.setStatus(EazySchoolConstants.CLOSE);
-            contact1.setUpdatedBy(updatedBy);
-            contact1.setUpdatedAt(LocalDateTime.now());
-        });
-
-        Contact savedContact = contactRepository.save(contact.get());
-        if(savedContact != null && savedContact.getUpdatedBy()!=null) isUpdated = true;
+        int rows = contactRepository.updateStatusById(EazySchoolConstants.CLOSE,contactId);
+        if(rows > 0) isUpdated = true;
         return isUpdated;
     }
 }

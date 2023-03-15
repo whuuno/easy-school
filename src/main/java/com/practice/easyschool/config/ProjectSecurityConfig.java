@@ -14,7 +14,8 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().ignoringRequestMatchers("/saveMsg")
                 .ignoringRequestMatchers("/public/**")
-                .ignoringRequestMatchers("/api/**").and()
+                .ignoringRequestMatchers("/api/**")
+                .ignoringRequestMatchers("/data-api/**").and()
                 .authorizeHttpRequests()
                 .requestMatchers("/dashboard").authenticated()
                 .requestMatchers("/").permitAll()
@@ -35,6 +36,8 @@ public class ProjectSecurityConfig {
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/api/**").authenticated()
                 .requestMatchers("/student/displayCourses").hasRole("STUDENT")
+                .requestMatchers("/profile/**").permitAll()
+                .requestMatchers("/data-api/**").authenticated()
                 .and().formLogin().loginPage("/login")
                 .defaultSuccessUrl("/dashboard").failureUrl("/login?error=true").permitAll()
                 .and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll()

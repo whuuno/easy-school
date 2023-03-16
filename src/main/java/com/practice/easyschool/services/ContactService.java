@@ -1,5 +1,6 @@
 package com.practice.easyschool.services;
 
+import com.practice.easyschool.config.EasySchoolProps;
 import com.practice.easyschool.constants.EazySchoolConstants;
 import com.practice.easyschool.model.Contact;
 import com.practice.easyschool.repository.ContactRepository;
@@ -25,6 +26,9 @@ public class ContactService {
     @Autowired
     ContactRepository contactRepository;
 
+    @Autowired
+    EasySchoolProps easySchoolProps;
+
     public ContactService(){
         System.out.println("Contact Service Bean initialized");
     }
@@ -43,7 +47,10 @@ public class ContactService {
     }
 
     public Page<Contact> findMsgsWithOpenStatus(int pageNum, String sortField, String sortDir){
-        int pageSize = 5;
+        int pageSize = easySchoolProps.getPageSize();
+        if(null!=easySchoolProps.getContact() && null!=easySchoolProps.getContact().get("pageSize")){
+            pageSize = Integer.parseInt(easySchoolProps.getContact().get("pageSize").trim());
+        }
         Pageable pageable = PageRequest.of(pageNum - 1,
                 pageSize, (sortDir == "asc") ? Sort.by(sortField).ascending():
                 Sort.by(sortField).descending());
